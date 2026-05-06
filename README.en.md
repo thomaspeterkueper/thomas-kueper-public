@@ -6,7 +6,7 @@
 
 [🇩🇪 Deutsche Version](./README.md)
 
----
+***
 
 ## 📖 About the Archive
 
