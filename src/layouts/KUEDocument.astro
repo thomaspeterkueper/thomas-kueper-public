@@ -1,5 +1,4 @@
 ---
-// src/layouts/KUEDocument.astro
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -10,7 +9,6 @@ const { document } = Astro.props;
 const { Content } = await document.render();
 const { data } = document;
 
-// Marker-Badges formatieren
 const markerLabels = {
   R: 'Research',
   T: 'Theoretical',
@@ -27,27 +25,17 @@ const markerLabels = {
   <title>{data.titel} | KUEPER.COM ARCHIV</title>
   <meta name="description" content={`${data.signatur} – ${data.titel}`}>
   <meta name="keywords" content={data.keywords.join(', ')}>
-  
-  <!-- DSGVO: Keine externen Ressourcen -->
   <link rel="stylesheet" href="/styles/scientific.css">
-  
-  <!-- Preload Fonts -->
-  <link rel="preload" href="/fonts/inter/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/source-serif/sourceserif-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/jetbrains-mono/jetbrainsmono-regular.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
-  <!-- Header -->
   <header class="site-header">
     <div class="container">
       <a href="/" class="site-title">KUEPER.COM ARCHIV</a>
       <nav class="site-nav">
         <a href="/kategorien">Kategorien</a>
         <a href="/marker">Marker</a>
-        <a href="/timeline">Timeline</a>
         <a href="/ueber">Über</a>
-        <a href="/suche">Suche</a>
         {data.sprache === 'DE' ? (
           <a href={`/en${Astro.url.pathname}`}>EN</a>
         ) : (
@@ -57,9 +45,7 @@ const markerLabels = {
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="container">
-    <!-- Document Metadata -->
     <aside class="document-meta">
       <dl>
         <dt>Signatur</dt>
@@ -68,7 +54,7 @@ const markerLabels = {
         <dt>Kategorie</dt>
         <dd>{data.kategorie}</dd>
         
-        <dt>Epistemologische Marker</dt>
+        <dt>Marker</dt>
         <dd>
           {data.marker.map(m => (
             <span class={`marker marker-${m}`}>[{m}] {markerLabels[m]}</span>
@@ -78,38 +64,15 @@ const markerLabels = {
         <dt>Version</dt>
         <dd>{data.version}</dd>
         
-        <dt>Status</dt>
-        <dd>{data.status}</dd>
-        
-        <dt>Publikationsdatum</dt>
+        <dt>Datum</dt>
         <dd>{data.datum.toLocaleDateString(data.sprache.toLowerCase())}</dd>
-        
-        {data.verwendet_in && data.verwendet_in.length > 0 && (
-          <>
-            <dt>Verwendet in</dt>
-            <dd>{data.verwendet_in.join(', ')}</dd>
-          </>
-        )}
-        
-        {data.language_variants && data.language_variants.length > 0 && (
-          <>
-            <dt>Sprachvarianten</dt>
-            <dd>
-              {data.language_variants.map(variant => (
-                <a href={`/${variant.toLowerCase()}`}>{variant}</a>
-              )).join(', ')}
-            </dd>
-          </>
-        )}
       </dl>
     </aside>
 
-    <!-- Document Content -->
     <article class="document-content">
       <Content />
     </article>
 
-    <!-- Verwandte Dokumente -->
     {data.verwandte_dokumente && data.verwandte_dokumente.length > 0 && (
       <aside class="related-documents">
         <h2>Verwandte Dokumente</h2>
@@ -121,7 +84,6 @@ const markerLabels = {
       </aside>
     )}
 
-    <!-- Quellen -->
     {data.quellen && data.quellen.length > 0 && (
       <aside class="sources">
         <h2>Quellen</h2>
@@ -134,36 +96,13 @@ const markerLabels = {
     )}
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <p>
         Thomas Peter Küper | Mörfelder Landstraße 103, 60598 Frankfurt am Main | 
         <a href="mailto:t.kueper@camaleo.de">t.kueper@camaleo.de</a>
       </p>
-      <p style="font-size: 0.85em; margin-top: 0.5rem; color: var(--text-muted);">
-        Fonts: Inter (Rasmus Andersson), Source Serif Pro (Adobe), JetBrains Mono (JetBrains) – SIL OFL 1.1 / Apache 2.0
-      </p>
     </div>
   </footer>
 </body>
 </html>
-
-<style>
-  .related-documents,
-  .sources {
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--border-medium);
-  }
-  
-  .related-documents ul,
-  .sources ol {
-    margin-top: var(--space-md);
-  }
-  
-  .sources ol {
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
-  }
-</style>
