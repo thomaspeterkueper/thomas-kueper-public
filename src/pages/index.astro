@@ -1,5 +1,5 @@
 ---
-// New Homepage - Converted from React design
+// src/pages/index.astro
 ---
 
 <!DOCTYPE html>
@@ -7,314 +7,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KUEPER.COM ARCHIV - Wissenschaftliche Wissensbasis für literarische Werke</title>
-  <meta name="description" content="Das kueper.com-Archiv dokumentiert wissenschaftliche Fakten, theoretische Frameworks und plausible Spekulationen — werk-übergreifend, transparent markiert, frei von fiktionalen Elementen.">
+  <title>KUEPER.COM — Thomas Peter Küper</title>
+  <meta name="description" content="Wissenschaftliche Grundlagen für literarische Werke — kueper.com Archiv">
   <link rel="stylesheet" href="/styles/fonts.css">
-  <link rel="stylesheet" href="/styles/homepage.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 600px;
+      text-align: center;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 2rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    
+    .tagline {
+      font-family: 'Source Serif Pro', serif;
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+    
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto 3rem;
+    }
+    
+    .btn {
+      display: block;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: #1a1a1a;
+      color: white;
+      border: 2px solid #1a1a1a;
+    }
+    
+    .btn-primary:hover {
+      background: #333;
+      border-color: #333;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: #1a1a1a;
+      border: 2px solid #e5e5e5;
+    }
+    
+    .btn-secondary:hover {
+      border-color: #999;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .footer {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    
+    .footer a {
+      color: #666;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      color: #1a1a1a;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .tagline {
+        font-size: 1.1rem;
+      }
+      
+      .footer {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-content">
-      <div class="brand">
-        <svg class="logo" viewBox="0 0 40 40" width="36" height="36">
-          <rect x="6" y="6" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(45 20 20)"/>
-          <circle cx="20" cy="20" r="3" fill="currentColor"/>
-        </svg>
-        <div class="brand-text">
-          <div class="brand-title">KUEPER</div>
-          <div class="brand-subtitle">Scientific Archive</div>
-        </div>
-      </div>
-
-      <nav class="main-nav">
-        <button class="nav-link active" data-section="home">Start</button>
-        <button class="nav-link" data-section="series">Serien</button>
-        <button class="nav-link" data-section="markers">Marker</button>
-        <button class="nav-link" data-section="about">Über</button>
-        
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="de">DE</button>
-          <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-      </nav>
+  
+  <div class="container">
+    <svg class="logo" viewBox="0 0 50 50">
+      <rect x="8" y="8" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(45 25 25)"/>
+      <circle cx="25" cy="25" r="3" fill="currentColor"/>
+    </svg>
+    
+    <h1>KUEPER.COM</h1>
+    <p class="tagline">Wissenschaftliche Grundlagen für literarische Werke</p>
+    
+    <div class="actions">
+      <a href="/kue" class="btn btn-primary">
+        Zum Archiv
+      </a>
+      <a href="https://thomas-kueper.de" class="btn btn-secondary">
+        Zur Autorenseite
+      </a>
     </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="main-content">
-
-    <!-- HOME SECTION -->
-    <section id="home" class="content-section active">
-      <!-- Hero -->
-      <div class="hero">
-        <svg class="hero-logo" viewBox="0 0 60 60" width="60" height="60">
-          <rect x="9" y="9" width="42" height="42" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(45 30 30)"/>
-          <circle cx="30" cy="30" r="4" fill="currentColor"/>
-        </svg>
-        
-        <h1 class="hero-title" data-de="Wissenschaft ist das Fundament." data-en="Science is the foundation.">
-          Wissenschaft ist das Fundament.
-        </h1>
-        <h2 class="hero-subtitle" data-de="Fiktion ist das Gebäude darauf." data-en="Fiction is the building upon it.">
-          Fiktion ist das Gebäude darauf.
-        </h2>
-        <p class="hero-desc" data-de="Das kueper.com-Archiv dokumentiert wissenschaftliche Fakten, theoretische Frameworks und plausible Spekulationen — werk-übergreifend, transparent markiert, frei von fiktionalen Elementen." data-en="The kueper.com archive documents scientific facts, theoretical frameworks, and plausible speculations — cross-work applicable, transparently marked, free of fictional elements.">
-          Das kueper.com-Archiv dokumentiert wissenschaftliche Fakten, theoretische Frameworks und plausible Spekulationen — werk-übergreifend, transparent markiert, frei von fiktionalen Elementen.
-        </p>
-      </div>
-
-      <!-- Principle Box -->
-      <div class="principle-box">
-        <h3 class="box-label" data-de="Grundprinzip" data-en="Core Principle">Grundprinzip</h3>
-        <p class="box-text" data-de="Wissenschaftliche Spekulation ohne narrative Einbettung. Wer mehrere Welten erschafft, benötigt ein Fundament, das größer ist als jede einzelne Geschichte." data-en="Scientific speculation without narrative embedding. Those who create multiple worlds need a foundation larger than any single story.">
-          Wissenschaftliche Spekulation ohne narrative Einbettung. Wer mehrere Welten erschafft, benötigt ein Fundament, das größer ist als jede einzelne Geschichte.
-        </p>
-      </div>
-
-      <!-- Allowed vs Forbidden -->
-      <div class="comparison-grid">
-        <div class="comparison-box allowed">
-          <h4 class="comparison-label" data-de="✓ Dokumentiert" data-en="✓ Documented">✓ Dokumentiert</h4>
-          <div class="comparison-markers">[R] [T] [S] [P]</div>
-        </div>
-        <div class="comparison-box forbidden">
-          <h4 class="comparison-label" data-de="✗ Nicht dokumentiert" data-en="✗ Not documented">✗ Nicht dokumentiert</h4>
-          <div class="comparison-markers">[F] Fictional</div>
-        </div>
-      </div>
-
-      <!-- Signature System -->
-      <div class="signature-box">
-        <h3 class="box-label" data-de="Das Signatur-System" data-en="The Signature System">Das Signatur-System</h3>
-        <div class="signature-display">KUE-SCI-0001-2026-DE</div>
-        <div class="signature-parts">
-          <span data-de="Präfix" data-en="Prefix">Präfix</span>
-          <span class="separator">·</span>
-          <span data-de="Serie" data-en="Series">Serie</span>
-          <span class="separator">·</span>
-          <span data-de="Nummer" data-en="Number">Nummer</span>
-          <span class="separator">·</span>
-          <span data-de="Jahr" data-en="Year">Jahr</span>
-          <span class="separator">·</span>
-          <span data-de="Sprache" data-en="Language">Sprache</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERIES SECTION -->
-    <section id="series" class="content-section">
-      <h2 class="section-title" data-de="Dokumentserien" data-en="Document Series">Dokumentserien</h2>
-      <div class="series-list">
-        <div class="series-item">
-          <div class="series-code">SCI</div>
-          <div class="series-content">
-            <div class="series-name" data-de="Scientific" data-en="Scientific">Scientific</div>
-            <div class="series-desc" data-de="Peer-reviewed Forschung, wissenschaftliche Analysen" data-en="Peer-reviewed research, scientific analyses">Peer-reviewed Forschung, wissenschaftliche Analysen</div>
-          </div>
-        </div>
-        <div class="series-item">
-          <div class="series-code">TEC</div>
-          <div class="series-content">
-            <div class="series-name" data-de="Technical" data-en="Technical">Technical</div>
-            <div class="series-desc" data-de="Technische Spezifikationen, Engineering-Dokumentation" data-en="Technical specifications, engineering documentation">Technische Spezifikationen, Engineering-Dokumentation</div>
-          </div>
-        </div>
-        <div class="series-item">
-          <div class="series-code">LSC</div>
-          <div class="series-content">
-            <div class="series-name" data-de="Life Sciences" data-en="Life Sciences">Life Sciences</div>
-            <div class="series-desc" data-de="Biologie, Medizin, Neurowissenschaften" data-en="Biology, medicine, neuroscience">Biologie, Medizin, Neurowissenschaften</div>
-          </div>
-        </div>
-        <div class="series-item">
-          <div class="series-code">OBS</div>
-          <div class="series-content">
-            <div class="series-name" data-de="Observations" data-en="Observations">Observations</div>
-            <div class="series-desc" data-de="Feldbeobachtungen, Ortsanalysen, Dokumentationen" data-en="Field observations, site analyses, documentations">Feldbeobachtungen, Ortsanalysen, Dokumentationen</div>
-          </div>
-        </div>
-        <div class="series-item">
-          <div class="series-code">FND</div>
-          <div class="series-content">
-            <div class="series-name" data-de="Foundational" data-en="Foundational">Foundational</div>
-            <div class="series-desc" data-de="Methodische Grundlagen, Kuratorische Prinzipien" data-en="Methodological foundations, curatorial principles">Methodische Grundlagen, Kuratorische Prinzipien</div>
-          </div>
-        </div>
-        <div class="series-item">
-          <div class="series-code">BIO</div>
-          <div class="series-content">
-            <div class="series-name" data-de="Biographical" data-en="Biographical">Biographical</div>
-            <div class="series-desc" data-de="Historische Persönlichkeiten (nur reale Personen)" data-en="Historical figures (real persons only)">Historische Persönlichkeiten (nur reale Personen)</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MARKERS SECTION -->
-    <section id="markers" class="content-section">
-      <h2 class="section-title" data-de="Epistemische Marker" data-en="Epistemic Markers">Epistemische Marker</h2>
-      <p class="section-intro" data-de="Jede Behauptung trägt ihre epistemische Klassifizierung. Transparenz über Wissensgrundlagen." data-en="Every claim carries its epistemic classification. Transparency about knowledge foundations.">
-        Jede Behauptung trägt ihre epistemische Klassifizierung. Transparenz über Wissensgrundlagen.
-      </p>
-
-      <div class="markers-grid">
-        <div class="marker-card" data-marker="R">
-          <div class="marker-badge" style="background: #1a5f2a;">[R]</div>
-          <div class="marker-content">
-            <div class="marker-name" data-de="Research" data-en="Research">Research</div>
-            <div class="marker-desc" data-de="Peer-reviewed, publizierte Forschung" data-en="Peer-reviewed, published research">Peer-reviewed, publizierte Forschung</div>
-          </div>
-        </div>
-        <div class="marker-card" data-marker="T">
-          <div class="marker-badge" style="background: #2563eb;">[T]</div>
-          <div class="marker-content">
-            <div class="marker-name" data-de="Theoretical" data-en="Theoretical">Theoretical</div>
-            <div class="marker-desc" data-de="Theoretische Frameworks mit wissenschaftlicher Grundlage" data-en="Theoretical frameworks with scientific basis">Theoretische Frameworks mit wissenschaftlicher Grundlage</div>
-          </div>
-        </div>
-        <div class="marker-card" data-marker="S">
-          <div class="marker-badge" style="background: #7c3aed;">[S]</div>
-          <div class="marker-content">
-            <div class="marker-name" data-de="Speculative" data-en="Speculative">Speculative</div>
-            <div class="marker-desc" data-de="Extrapolationen basierend auf etablierten Prinzipien" data-en="Extrapolations based on established principles">Extrapolationen basierend auf etablierten Prinzipien</div>
-          </div>
-        </div>
-        <div class="marker-card" data-marker="P">
-          <div class="marker-badge" style="background: #0891b2;">[P]</div>
-          <div class="marker-content">
-            <div class="marker-name" data-de="Plausible" data-en="Plausible">Plausible</div>
-            <div class="marker-desc" data-de="Konsistent mit bekannten Naturgesetzen" data-en="Consistent with known natural laws">Konsistent mit bekannten Naturgesetzen</div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="section-subtitle forbidden-title" data-de="Ausgeschlossen" data-en="Excluded">Ausgeschlossen</h3>
-      <div class="marker-card forbidden-marker">
-        <div class="marker-badge" style="background: #991b1b;">[F]</div>
-        <div class="marker-content">
-          <div class="marker-name" style="color: #991b1b;">Fictional</div>
-          <div class="marker-desc" style="color: #7f1d1d;" data-de="Fiktionale Elemente, Charaktere, Plots" data-en="Fictional elements, characters, plots">Fiktionale Elemente, Charaktere, Plots</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="content-section">
-      <h2 class="section-title" data-de="Über das Archiv" data-en="About the Archive">Über das Archiv</h2>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="about-p1" data-de="Das kueper.com-Archiv ist die wissenschaftliche Grundlage für alle literarischen Werke des Kurators Thomas Peter Küper." data-en="The kueper.com archive is the scientific foundation for all literary works by curator Thomas Peter Küper.">
-            Das kueper.com-Archiv ist die wissenschaftliche Grundlage für alle literarischen Werke des Kurators Thomas Peter Küper.
-          </p>
-          <p class="about-p2" data-de="Es dient nicht der Erzählung. Es dient der Konsistenz." data-en="It does not serve narrative. It serves consistency.">
-            Es dient nicht der Erzählung. Es dient der Konsistenz.
-          </p>
-          <p class="about-p3" data-de="Einmal recherchieren — überall nutzen. Klare Trennung zwischen Fakt und Fiktion. Wissenschaftliche Glaubwürdigkeit durch transparente Epistemologie." data-en="Research once — use everywhere. Clear separation between fact and fiction. Scientific credibility through transparent epistemology.">
-            Einmal recherchieren — überall nutzen. Klare Trennung zwischen Fakt und Fiktion. Wissenschaftliche Glaubwürdigkeit durch transparente Epistemologie.
-          </p>
-        </div>
-        <div class="curator-box">
-          <div class="curator-label" data-de="Kurator" data-en="Curator">Kurator</div>
-          <div class="curator-name">Thomas Peter Küper</div>
-          <div class="curator-location">Frankfurt am Main</div>
-          <div class="curator-logo">
-            <svg viewBox="0 0 40 40" width="30" height="30">
-              <rect x="6" y="6" width="28" height="28" fill="none" stroke="#ccc" stroke-width="1.5" transform="rotate(45 20 20)"/>
-              <circle cx="20" cy="20" r="2.5" fill="#ccc"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Two-Pillar Model -->
-      <div class="two-pillar">
-        <h3 class="box-label center" data-de="Das Zwei-Säulen-Modell" data-en="The Two-Pillar Model">Das Zwei-Säulen-Modell</h3>
-        <div class="pillar-grid">
-          <div class="pillar active">
-            <div class="pillar-name">KUEPER.COM</div>
-            <div class="pillar-markers">[R] [T] [S] [P]</div>
-            <div class="pillar-label" data-de="Wissenschaftlich" data-en="Scientific">Wissenschaftlich</div>
-          </div>
-          <div class="pillar-arrow">→</div>
-          <div class="pillar inactive">
-            <div class="pillar-name">OVERTIME ARCHIVE</div>
-            <div class="pillar-markers">[R] [T] [S] [P] [F]</div>
-            <div class="pillar-label" data-de="Narrativ" data-en="Narrative">Narrativ</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
- <footer class="site-footer">
-  <div class="footer-content">
-    <div class="footer-left">
-      KUEPER.COM · <span data-de="Gegründet 2026" data-en="Established 2026">Gegründet 2026</span>
-      <span style="margin: 0 8px; color: #ccc;">·</span>
-      <a href="/impressum" style="color: #666; text-decoration: none;">Impressum</a>
-      <span style="margin: 0 8px; color: #ccc;">·</span>
-      <a href="/datenschutz" style="color: #666; text-decoration: none;">Datenschutz</a>
-    </div>
-    <div class="footer-center">
-      <em data-de="»Konsistenz beginnt mit der Wahrheit.«" data-en="&quot;Consistency begins with truth.&quot;">»Konsistenz beginnt mit der Wahrheit.«</em>
-    </div>
-    <div class="footer-logo">
-      <svg viewBox="0 0 30 30" width="24" height="24">
-        <rect x="5" y="5" width="20" height="20" fill="none" stroke="#ccc" stroke-width="1.5" transform="rotate(45 15 15)"/>
-        <circle cx="15" cy="15" r="2" fill="#ccc"/>
-      </svg>
+    
+    <div class="footer">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
     </div>
   </div>
-</footer>
 
-  <script>
-  // Navigation
-  const navLinks = document.querySelectorAll<HTMLButtonElement>('.nav-link');
-  const sections = document.querySelectorAll<HTMLElement>('.content-section');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      const targetSection = link.getAttribute('data-section');
-      if (!targetSection) return;
-      
-      navLinks.forEach(l => l.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-      
-      link.classList.add('active');
-      const targetElement = document.getElementById(targetSection);
-      if (targetElement) {
-        targetElement.classList.add('active');
-      }
-    });
-  });
-
-  // Language Switcher
-  const langBtns = document.querySelectorAll<HTMLButtonElement>('.lang-btn');
-  const translatableElements = document.querySelectorAll<HTMLElement>('[data-de][data-en]');
-
-  langBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetLang = btn.getAttribute('data-lang') as 'de' | 'en';
-      if (!targetLang) return;
-      
-      langBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      
-      translatableElements.forEach(el => {
-        const text = el.getAttribute(`data-${targetLang}`);
-        if (text) el.textContent = text;
-      });
-
-      // Update signature example
-      const sigDisplay = document.querySelector<HTMLElement>('.signature-display');
-      if (sigDisplay) {
-        sigDisplay.textContent = targetLang === 'de' ? 'KUE-SCI-0001-2026-DE' : 'KUE-SCI-0001-2026-EN';
-      }
-    });
-  });
-</script>
 </body>
 </html>
