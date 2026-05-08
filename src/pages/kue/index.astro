@@ -1,0 +1,269 @@
+---
+// src/pages/kue/index.astro
+import { getCollection } from 'astro:content';
+
+const allDocs = await getCollection('kue');
+
+// Category definitions with counts
+const categories = [
+  { id: 'BIO', name: 'Biographical Profiles', desc: 'Biografien realer historischer Personen' },
+  { id: 'SCI', name: 'Scientific Frameworks', desc: 'Physikalische Theorien und wissenschaftliche Modelle' },
+  { id: 'TEC', name: 'Technical Specifications', desc: 'Engineering und technische Spezifikationen' },
+  { id: 'LSC', name: 'Life Sciences', desc: 'Neurologie, Genetik, Biologie, Medizin' },
+  { id: 'PHY', name: 'Physics', desc: 'Quantenmechanik und fundamentale Kräfte' },
+  { id: 'ARC', name: 'Architecture', desc: 'Konstruktionsprinzipien und Lebensraumgestaltung' },
+  { id: 'HIS', name: 'History', desc: 'Wissenschaftlich recherchierte Geschichte' },
+  { id: 'GEO', name: 'Geography', desc: 'Planetologie, Geologie, Terraforming' },
+  { id: 'PSY', name: 'Psychology', desc: 'Sozialpsychologie und Verhaltensforschung' },
+  { id: 'SOC', name: 'Sociology', desc: 'Organisationstheorie und Gruppenverhalten' },
+  { id: 'LNG', name: 'Linguistics', desc: 'Sprachentwicklung und linguistische Systeme' },
+  { id: 'ECO', name: 'Ecology', desc: 'Ökosysteme und Klimamodelle' },
+  { id: 'ORG', name: 'Organizational Models', desc: 'Wissenschaftlich fundierte Strukturen' },
+  { id: 'OBS', name: 'Observations', desc: 'Beobachtungs-Notizen und Einzelbefunde' },
+  { id: 'FND', name: 'Foundational', desc: 'Methodendokumente der Plattform' },
+  { id: 'OPS', name: 'Operations', desc: 'Operative Dokumente' },
+  { id: 'MET', name: 'Methodology', desc: 'Methodologische Grundlagen' }
+];
+
+// Count documents per category
+const categoryCounts = categories.map(cat => {
+  const count = allDocs.filter(doc => doc.data.kategorie === cat.id).length;
+  return { ...cat, count };
+}).filter(cat => cat.count > 0); // Only show categories with documents
+
+const totalDocs = allDocs.length;
+---
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KUEPER.COM ARCHIV — Wissenschaftliche Wissensbasis</title>
+  <meta name="description" content="Wissenschaftliche Grundlagen für literarische Werke — peer-reviewed Forschung, theoretische Frameworks, plausible Spekulationen">
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/kue-document.css">
+  <style>
+    .archive-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    
+    .archive-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--kue-border);
+    }
+    
+    .archive-logo {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .archive-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--kue-fg);
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .archive-subtitle {
+      font-family: 'Source Serif Pro', serif;
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 400;
+    }
+    
+    .archive-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--kue-fg);
+    }
+    
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .category-card {
+      background: white;
+      border: 1px solid var(--kue-border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .category-card:hover {
+      border-color: #999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    
+    .category-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
+    
+    .category-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #999;
+    }
+    
+    .category-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--kue-fg);
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .category-desc {
+      font-family: 'Source Serif Pro', serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #666;
+      margin: 0;
+    }
+    
+    .archive-footer {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--kue-border);
+      color: #888;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+      color: var(--kue-fg);
+    }
+    
+    @media (max-width: 768px) {
+      .archive-title {
+        font-size: 2rem;
+      }
+      
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .archive-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="archive-container">
+    
+    <!-- Header -->
+    <header class="archive-header">
+      <svg class="archive-logo" viewBox="0 0 50 50">
+        <rect x="8" y="8" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(45 25 25)"/>
+        <circle cx="25" cy="25" r="3" fill="currentColor"/>
+      </svg>
+      
+      <h1 class="archive-title">KUEPER.COM ARCHIV</h1>
+      <p class="archive-subtitle">Wissenschaftliche Wissensbasis für literarische Werke</p>
+      
+      <div class="archive-stats">
+        <div class="stat">
+          <span class="stat-number">{totalDocs}</span>
+          <span>Dokumente</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">{categoryCounts.length}</span>
+          <span>Kategorien</span>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Categories -->
+    <div class="category-grid">
+      {categoryCounts.map(cat => (
+        <a href={`/kue/${cat.id.toLowerCase()}`} class="category-card">
+          <div class="category-header">
+            <span class="category-id">{cat.id}</span>
+            <span class="category-count">{cat.count} {cat.count === 1 ? 'Dok.' : 'Dok.'}</span>
+          </div>
+          <h2 class="category-name">{cat.name}</h2>
+          <p class="category-desc">{cat.desc}</p>
+        </a>
+      ))}
+    </div>
+    
+    <!-- Footer -->
+    <footer class="archive-footer">
+      <div>
+        <svg viewBox="0 0 30 30" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+          <rect x="4" y="4" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(45 15 15)"/>
+          <circle cx="15" cy="15" r="2" fill="currentColor"/>
+        </svg>
+        KUEPER.COM ARCHIV
+      </div>
+      
+      <div class="footer-links">
+        <a href="/">Startseite</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </div>
+      
+      <div style="margin-top: 1rem; font-size: 0.85rem;">
+        Kuratiert von Thomas Peter Küper · Frankfurt am Main
+      </div>
+    </footer>
+    
+  </div>
+
+</body>
+</html>
