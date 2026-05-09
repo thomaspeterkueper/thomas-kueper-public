@@ -1,0 +1,272 @@
+---
+import Navigation from '../components/Navigation.astro';
+---
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Über das Archiv — KUEPER.COM</title>
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/kue-document.css">
+  <style>
+    body {
+      background: var(--kue-bg, #f5f3ef);
+      margin: 0;
+      padding: 0;
+    }
+    
+    .page-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem 2rem;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--kue-border-light, #e8e8e6);
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      color: #1a1a1a;
+    }
+    
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 400;
+      margin: 0;
+    }
+    
+    .content-section {
+      margin-bottom: 3rem;
+    }
+    
+    .content-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      color: #1a1a1a;
+    }
+    
+    .content-section p {
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .principle-box {
+      background: white;
+      border-left: 3px solid #1a1a1a;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 4px 4px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    
+    .principle-box h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .principle-box p {
+      margin: 0;
+      color: #4a4a4a;
+    }
+    
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .category-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    
+    .category-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+    
+    .category-desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <Navigation />
+  
+  <div class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Über das Archiv</h1>
+      <p class="page-subtitle">Wissenschaftliche Wissensbasis für literarische Werke</p>
+    </header>
+
+    <section class="content-section">
+      <h2>Was ist kueper.com?</h2>
+      <p>Das kueper.com-Archiv ist die <strong>wissenschaftliche Grundlage</strong> für alle literarischen Werke des Kurators Thomas Peter Küper.</p>
+      
+      <p>Es dient nicht der Erzählung. Es dient der <strong>Konsistenz</strong>.</p>
+      
+      <p>Wer mehrere Welten erschafft, benötigt ein Fundament, das größer ist als jede einzelne Geschichte. Ein Archiv wissenschaftlicher Fakten, theoretischer Frameworks und plausibler Spekulationen, das werk-übergreifend gilt.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Grundprinzipien</h2>
+      
+      <div class="principle-box">
+        <h3>Wissenschaftliche Spekulation ohne narrative Einbettung</h3>
+        <p>Das Archiv dokumentiert ausschließlich peer-reviewed Forschung, theoretische Frameworks, spekulative Extrapolationen und plausible Wissenschaft — niemals fiktionale Charaktere, Plots oder narrative Szenen.</p>
+      </div>
+      
+      <div class="principle-box">
+        <h3>Werk-übergreifende Konsistenz</h3>
+        <p>Ein KUE-Dokument kann in verschiedenen literarischen Werken verwendet werden. Wenn die Mars-Atmosphäre in einem Dokument definiert ist, gilt dieser Wert in allen Werken, die darauf referenzieren.</p>
+      </div>
+      
+      <div class="principle-box">
+        <h3>Epistemologische Transparenz</h3>
+        <p>Jede Aussage wird mit einem epistemologischen Marker versehen: [R] für Research, [T] für Theoretical, [S] für Speculative, [P] für Plausible. Was unsicher ist, wird als unsicher gekennzeichnet.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Kategorien im Archiv</h2>
+      <p>Das Archiv gliedert sich in wissenschaftliche Kategorien, die unterschiedliche Wissensgebiete abdecken:</p>
+      
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-code">SCI</div>
+          <div class="category-name">Scientific Frameworks</div>
+          <p class="category-desc">Physikalische Theorien, wissenschaftliche Modelle</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">TEC</div>
+          <div class="category-name">Technology Speculation</div>
+          <p class="category-desc">Engineering, Antriebssysteme, technische Spezifikationen</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">LSC</div>
+          <div class="category-name">Life Sciences</div>
+          <p class="category-desc">Neurologie, Genetik, Biologie, Medizin</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">PHY</div>
+          <div class="category-name">Physics</div>
+          <p class="category-desc">Quantenmechanik, Frequenz-Modelle, Vakuum-Physik</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">BIO</div>
+          <div class="category-name">Biographical Profiles</div>
+          <p class="category-desc">Nur reale historische Personen</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">HIS</div>
+          <div class="category-name">History</div>
+          <p class="category-desc">Wissenschaftlich recherchierte Geschichte, Archäologie</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">GEO</div>
+          <div class="category-name">Geography</div>
+          <p class="category-desc">Planetologie, Geologie, Terraforming-Potenziale</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">OBS</div>
+          <div class="category-name">Observations</div>
+          <p class="category-desc">Beobachtungs-Notizen und Einzelbefunde</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-code">FND</div>
+          <div class="category-name">Foundational</div>
+          <p class="category-desc">Methodendokumente und Gründungstexte</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Verhältnis zum OverTime Archive</h2>
+      <p>Das kueper.com-Archiv ist <strong>nicht</strong> das OverTime Archive (OTA). Die beiden Plattformen unterscheiden sich fundamental:</p>
+      
+      <table style="width: 100%; margin: 2rem 0; border-collapse: collapse;">
+        <thead>
+          <tr style="background: white; border-bottom: 2px solid #333;">
+            <th style="padding: 1rem; text-align: left;">Aspekt</th>
+            <th style="padding: 1rem; text-align: left;">kueper.com (KUE)</th>
+            <th style="padding: 1rem; text-align: left;">OverTime Archive (OTA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: white;">
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;"><strong>Zweck</strong></td>
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;">Wissenschaftliche Grundlagen</td>
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;">Werk-spezifische Begleitdokumente</td>
+          </tr>
+          <tr style="background: #fafafa;">
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;"><strong>Universumsbezug</strong></td>
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;">Verboten</td>
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;">Erlaubt</td>
+          </tr>
+          <tr style="background: white;">
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;"><strong>Fiktion</strong></td>
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;">Keine fiktionalen Elemente</td>
+            <td style="padding: 1rem; border-bottom: 1px solid #eee;">Fiktionale Anwendungen erlaubt</td>
+          </tr>
+          <tr style="background: #fafafa;">
+            <td style="padding: 1rem;"><strong>Verweisrichtung</strong></td>
+            <td style="padding: 1rem;">KUE verweist nicht auf OTA</td>
+            <td style="padding: 1rem;">OTA verweist auf KUE</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p><strong>Beispiel einer Dokumenten-Kette:</strong></p>
+      <p>Ein wissenschaftliches Paper über Frequenzbasierte Physik erscheint als KUE-SCI-0012 (werk-neutral, ohne fiktionale Elemente). Das gleiche Thema kann dann in einem OTA-Dokument (z.B. OTA-SCI-0026) mit fiktionalen Kontexten angereichert werden — mit Verweis auf die wissenschaftliche Grundlage in KUE-SCI-0012.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Kurator</h2>
+      <p>Das Archiv wird kuratiert von <strong>Thomas Peter Küper</strong>, Frankfurt am Main.</p>
+      <p>Für Fragen oder Anregungen: Siehe <a href="/impressum" style="color: #1a1a1a; text-decoration: underline;">Impressum</a></p>
+    </section>
+  </div>
+</body>
+</html>
