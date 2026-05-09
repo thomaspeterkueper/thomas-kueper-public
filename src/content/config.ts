@@ -24,7 +24,7 @@ const kueCollection = defineCollection({
       'OPS',  // Operations
       'MET',  // Methodology
     ]),
-    marker: z.array(z.enum(['R', 'T', 'S', 'P'])),
+    marker: z.array(z.enum(['R', 'T', 'S', 'P', 'I', 'H'])),
     version: z.string(),
     status: z.string(),
     sprache: z.enum(['DE', 'EN']),
